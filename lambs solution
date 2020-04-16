@@ -1,0 +1,24 @@
+import math
+
+d={0:0,1:1,2:1}
+for i in range(2,42):
+    d[i]=d[i-1]+d[i-2]
+def solution(total_lambs):
+    if total_lambs==1:
+        return 0
+    elif total_lambs==2:
+        return 1
+    elif total_lambs==3:
+        return 0
+    else:
+        generous=math.log(total_lambs+1,2)
+        generous//=1
+        dd=0
+        p=0
+        d={0:0,1:1,2:1}
+        for i in range(2,46):
+            d[i]=d[i-1]+d[i-2]
+        while dd<=total_lambs:
+            p+=1  
+            dd+=d[p]
+        return int((p-1)-generous)
